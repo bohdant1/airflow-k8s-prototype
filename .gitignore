@@ -1,0 +1,7 @@
+# Ignore compiled CloudFormation templates
+*.template.out
+
+# macOS folder structure
+.DS_Store
+.AppleDouble
+.LSOverride
