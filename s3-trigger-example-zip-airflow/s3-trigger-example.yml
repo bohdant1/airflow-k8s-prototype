@@ -1,0 +1,21 @@
+Resources:
+  LambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: S3TriggerExampleFunction
+      Handler: index.handler
+      Runtime: nodejs14.x
+      Role: arn:aws:iam::000000000000:role/lambda-role
+      Code:
+         S3Bucket: lambda-function-code-s3-trigger-airflow
+         S3Key: MyBundledLambdaFunctionCode.zip
+
+  # Create our S3 bucket, pre-configured to invoke our Lambda.
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: eventbucket                   # CHANGE THIS
+      NotificationConfiguration:
+        LambdaConfigurations:
+        - Event: "s3:ObjectCreated:*"
+          Function: !GetAtt LambdaFunction.Arn
