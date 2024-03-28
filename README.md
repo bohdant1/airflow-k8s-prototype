@@ -29,3 +29,6 @@ Orchestrating ETL pipelines can be hard. This repository contains:
 
 1. `awslocal logs tail '/aws/lambda/\<lambda-name\>' --follow`
 
+## References
+
+1. https://www.bytescale.com/blog/cloudformation-lambda-examples/
