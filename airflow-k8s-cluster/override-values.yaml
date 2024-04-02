@@ -10,6 +10,9 @@ image:
   repository: customairflow
   tag: v3
   pullPolicy: IfNotPresent
+extraEnv: |
+- name: AIRFLOW__API__AUTH_BACKENDS
+  value: 'airflow.api.auth.backend.basic_auth'
 extraSecrets:
   airflow-ssh-secret:
     data: |
